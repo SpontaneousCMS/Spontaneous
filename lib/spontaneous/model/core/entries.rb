@@ -47,6 +47,11 @@ module Spontaneous::Model::Core
       depth
     end
 
+    def entry_modified!(modified_entry)
+      self.entry_store = store = all_contents.serialize_db
+      all_contents.update(store)
+    end
+
     def contents
       contents_of(boxes)
     end
